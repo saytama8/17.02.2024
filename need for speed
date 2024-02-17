@@ -1,0 +1,58 @@
+from pygame import *
+window_speed = display.set_mode((700,500))
+display.set_caption("Need for Ukraine")
+backgroud = transform.scale(image.load("sped.jpg"),(700,500))
+
+
+
+
+fps = time.Clock()
+Fps = 60
+
+x1 = 100
+y1 = 300
+
+x2 = 300
+y2 = 300
+
+putinlohtupui = transform.scale(image.load("putinloh1.png"),(100,100))
+roshen = transform.scale(image.load("roshen.png"),(100,100))
+
+
+
+run = True
+while run:
+
+    window_speed.blit(backgroud,(0,0))
+    window_speed.blit(putinlohtupui,(x2,y2))
+    window_speed.blit(roshen,(x1,y1))
+    for e in event.get():
+        if e.type == QUIT:
+            run = False
+
+    keys_pressed = key.get_pressed()
+
+
+    if keys_pressed[K_LEFT] and x1>5:
+        x1-= 15
+    if keys_pressed[K_RIGHT] and x1<595:
+        x1+= 15
+    if keys_pressed[K_UP] and y1>5:
+        y1-= 15
+    if keys_pressed[K_DOWN] and y1<395:
+        y1+= 15
+
+    
+    if keys_pressed[K_a] and x2>5:
+        x2-= 15
+    if keys_pressed[K_d] and x2<595:
+        x2+= 15
+    if keys_pressed[K_w] and y2>5:
+        y2-= 15
+    if keys_pressed[K_s] and y2<395:
+        y2+= 15
+    
+
+
+    display.update()
+    fps.tick(Fps)
